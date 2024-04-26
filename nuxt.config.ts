@@ -45,7 +45,8 @@ export default defineNuxtConfig({
   hooks: {
     "builder:watch": console.log,
   },
-  baseURL: '/tic-tac-toe/'
+  baseURL: '/tic-tac-toe/',
+  buildAssetsDir: '/tic-tac-toe/_nuxt/',
   // typescript: {
   //   typeCheck: true,
   //   strict: true
