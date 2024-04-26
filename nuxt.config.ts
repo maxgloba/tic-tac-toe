@@ -45,9 +45,9 @@ export default defineNuxtConfig({
   hooks: {
     "builder:watch": console.log,
   },
-  // router: {
-  //   base: '/tic-tac-toe/'
-  // }
+  router: {
+    base: '/tic-tac-toe/'
+  }
   // typescript: {
   //   typeCheck: true,
   //   strict: true
