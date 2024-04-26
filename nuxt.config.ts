@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: {
-        lang: "en",
+        lang: "ru",
       },
       link: [
         { rel: "icon", type: "image/png", href: "/img/favicon.png" },
@@ -16,18 +16,6 @@ export default defineNuxtConfig({
       ],
       charset: "utf-8",
       viewport: "width=device-width, user-scalable=no, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=0",
-      meta: [
-        { name: "description", content: "" },
-        { name: "keywords", content: "" },
-        { name: "og:title", content: "" },
-        { name: "og:description", content: "" },
-        { name: "og:image", content: "/favicon.png" },
-        { name: "og:url", content: "" },
-        { name: "color-scheme", content: "only light" }
-      ],
-      script: [
-        { src: "/height.js", defer: true }
-      ],
     },
   },
   plugins: [],
@@ -57,9 +45,9 @@ export default defineNuxtConfig({
   hooks: {
     "builder:watch": console.log,
   },
-  router: {
-    base: '/tic-tac-toe/'
-  }
+  // router: {
+  //   base: '/tic-tac-toe/'
+  // }
   // typescript: {
   //   typeCheck: true,
   //   strict: true
