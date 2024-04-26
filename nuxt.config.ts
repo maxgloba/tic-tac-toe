@@ -17,6 +17,8 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport: "width=device-width, user-scalable=no, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=0",
     },
+    baseURL: '/tic-tac-toe/',
+    buildAssetsDir: '/tic-tac-toe/_nuxt/',
   },
   plugins: [],
   modules: ["nuxt-viewport"],
@@ -44,9 +46,7 @@ export default defineNuxtConfig({
   },
   hooks: {
     "builder:watch": console.log,
-  },
-  baseURL: '/tic-tac-toe/',
-  buildAssetsDir: '/tic-tac-toe/_nuxt/',
+  }
   // typescript: {
   //   typeCheck: true,
   //   strict: true
