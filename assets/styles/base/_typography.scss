@@ -1,0 +1,47 @@
+html, body, *{
+  font-family: var(--font);
+}
+
+body{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--white-light);
+  background: var(--dark-light);
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{}
+
+h1, .h1{}
+h2, .h2{}
+h3, .h3{}
+h4, .h4{}
+h5, .h5{}
+h6, .h6{}
+
+p, .p{}
+
+input, select, textarea{}
+
+ul{
+  padding-left: 1rem;
+  li{
+    list-style: none;
+  }
+}
+
+i{
+  font-style: italic;
+}
+
+a{
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
