@@ -123,7 +123,7 @@ const clear = () => {
   &__btn{
     background: #0088CC;
     border-radius: res(4, 8);
-    height: 140px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
