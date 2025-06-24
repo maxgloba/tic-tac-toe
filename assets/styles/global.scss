@@ -1,19 +1,16 @@
 @import 'base/all';
 
-// @media(min-width:1200px){
-//   body::-webkit-scrollbar {
-//     width: 4px;
-//   }
+html, body, *{
+  font-family: var(--font);
+}
 
-//   body::-webkit-scrollbar-track {
-//     background: transparent;
-//   }
-
-//   body::-webkit-scrollbar-thumb {
-//     background-color: var(--dark-blue);
-//     border-radius: 0;
-//   }
-// }
+body{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--white-light);
+  background: var(--dark-light);
+}
 
 .screen{
   position: absolute;

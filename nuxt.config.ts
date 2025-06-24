@@ -30,15 +30,6 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/styles/global.scss"],
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@import "~/assets/styles/base/_functions.scss";',
-        },
-      },
-    },
-  },
   runtimeConfig: {},
   nitro: {
     compressPublicAssets: true,
@@ -47,8 +38,4 @@ export default defineNuxtConfig({
   hooks: {
     "builder:watch": console.log,
   }
-  // typescript: {
-  //   typeCheck: true,
-  //   strict: true
-  // }
 });
