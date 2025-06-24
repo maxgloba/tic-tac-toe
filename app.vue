@@ -112,30 +112,29 @@ const clear = () => {
 
 <style lang="scss" scoped>
 .main{
-  padding: 0 10px;
+  padding: 0 8px;
 }
 .ttt{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: res(4, 8);
-  max-width: 600px;
-  margin: 16px auto;
+  gap: 8px;
+  height: calc(100vh - 80px);
+  margin-top: 80px;
+  padding-bottom: .5rem;
   &__btn{
     background: #0088CC;
     border-radius: res(4, 8);
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: none;
     position: relative;
-    @media(min-width:768px){
-      height: 170px;
-    }
     svg{
       max-width: res(64, 128);
       max-height: res(64, 128);
-      path: {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      path {
         fill: #fafafa;
       }
     }
@@ -148,7 +147,11 @@ const clear = () => {
     font-size: res(20, 32);
     font-weight: 700;
     text-align: center;
-    padding-top: 16px;
+    padding: 1rem 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
   }
   &__msg {
     padding: 16px 0;
