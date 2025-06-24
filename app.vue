@@ -1,6 +1,6 @@
 <template>
   <main class="main">
-    <div class="ttt__score">SCORE <br> {{ playerOne }} : {{ playerTwo }}</div>
+    <div class="ttt__score">счёт <br> {{ playerOne }} : {{ playerTwo }}</div>
     <div class="ttt">
       <button
         class="ttt__btn"
@@ -78,14 +78,14 @@ const itemAction = (index) => {
     const vc = victory.value[i]
 
     if( typeof vc.find(el => el === oneArr[0]) === 'number' && typeof vc.find(el => el === oneArr[1]) === 'number' && typeof vc.find(el => el === oneArr[2]) === 'number' ){
-      msg.value = 'player one WON!'
+      msg.value = 'игрок 1 выиграл!'
       playerOne.value = playerOne.value + 1
       setTimeout(() => { clear() }, 1000)
       break;
     }
 
     if( typeof vc.find(el => el === twoArr[0]) === 'number' && typeof vc.find(el => el === twoArr[1]) === 'number' && typeof vc.find(el => el === twoArr[2]) === 'number' ){
-      msg.value = 'player two WON!'
+      msg.value = 'игрок 2 выиграл!'
       playerTwo.value = playerTwo.value + 1
       setTimeout(() => { clear() }, 1000)
       break;
