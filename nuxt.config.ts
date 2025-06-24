@@ -1,7 +1,5 @@
 import { defineNuxtConfig } from "nuxt/config"
 
-const mode = process.env.NODE_ENV === "development" ? "LOCAL" : "STAG"
-
 export default defineNuxtConfig({
   app: {
     head: {
@@ -18,7 +16,7 @@ export default defineNuxtConfig({
       viewport: "width=device-width, user-scalable=no, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=0",
     },
     baseURL: '/tic-tac-toe/',
-    buildAssetsDir: '/tic-tac-toe/_nuxt/',
+    buildAssetsDir: '/assets/',
   },
   plugins: [],
   modules: ["nuxt-viewport"],
@@ -30,7 +28,6 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/styles/global.scss"],
-  runtimeConfig: {},
   nitro: {
     compressPublicAssets: true,
     preset: "node-server",
