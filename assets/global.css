@@ -1,0 +1,130 @@
+html, body, * { font-family: 'Roboto', sans-serif; }
+
+body {
+  background-color: #0d0d20;
+  color: #fafafa;
+  height: 100vh;
+}
+
+/* ── 3D Board buttons ── */
+.ttt-btn {
+  border-radius: 12px;
+  background: radial-gradient(ellipse at 45% 25%, #81d4fa 0%, #4fc3f7 20%, #0288d1 80%, #01579b 100%);
+  box-shadow:
+    0 8px 0 #01426e,
+    0 14px 30px rgba(0, 0, 0, 0.7),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.ttt-btn:hover:not(:disabled) {
+  background: radial-gradient(ellipse at 45% 25%, #b3e5fc 0%, #81d4fa 20%, #4fc3f7 50%, #039be5 80%, #0277bd 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 0 #01426e,
+    0 18px 34px rgba(0, 0, 0, 0.7),
+    inset 0 2px 4px rgba(255, 255, 255, 0.65),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.3);
+}
+.ttt-btn:active:not(:disabled) {
+  transform: translateY(6px);
+  box-shadow:
+    0 2px 0 #01426e,
+    0 5px 10px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+}
+.ttt-btn--win {
+  background: radial-gradient(ellipse at 45% 25%, #a7f3d0 0%, #6ee7b7 20%, #34d399 50%, #059669 80%, #065f46 100%);
+  box-shadow:
+    0 8px 0 #064e3b,
+    0 14px 30px rgba(0, 0, 0, 0.7),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.3);
+  animation: pulse-win 0.6s ease;
+}
+
+/* ── 3D Name buttons ── */
+.name-btn {
+  background: linear-gradient(180deg, #2a2a3e 0%, #1a1a2e 60%, #111122 100%);
+  box-shadow:
+    0 4px 0 #08080f,
+    0 7px 14px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  border: none;
+  transform: translateY(0);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.name-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #08080f, 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.name-btn--active {
+  background: linear-gradient(180deg, #7c3aed 0%, #5b21b6 60%, #4c1d95 100%);
+  box-shadow:
+    0 4px 0 #2e1065,
+    0 8px 20px rgba(109, 40, 217, 0.55),
+    0 0 30px rgba(139, 92, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* ── 3D SVG Symbols ── */
+/* Board cells: massive, centered, 3D depth via stacked drop-shadows */
+.icon-cell {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 68%; height: 68%;
+}
+.icon-x {
+  filter:
+    drop-shadow(3px 5px 0 #3b0764)
+    drop-shadow(0 8px 16px rgba(0, 0, 0, 0.7));
+}
+.icon-o {
+  filter:
+    drop-shadow(3px 5px 0 #3b0764)
+    drop-shadow(0 8px 16px rgba(0, 0, 0, 0.7));
+}
+/* Header icons: larger, with purple glow */
+.icon-header {
+  width: 60px; height: auto;
+}
+.icon-header.icon-x,
+.icon-header.icon-o {
+  filter:
+    drop-shadow(0 0 12px rgba(168, 85, 247, 0.75))
+    drop-shadow(3px 5px 0 #3b0764)
+    drop-shadow(0 8px 18px rgba(0, 0, 0, 0.6));
+}
+/* Score numbers */
+.score-num {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #fff;
+  min-width: 28px;
+  text-align: center;
+}
+
+/* Vue <Transition name="modal"> */
+.modal-enter-active,
+.modal-leave-active { transition: opacity 0.2s, transform 0.2s; }
+.modal-enter-from,
+.modal-leave-to     { opacity: 0; transform: scale(0.9); }
+.modal-enter-to,
+.modal-leave-from   { opacity: 1; transform: scale(1); }
+
+/* ── Keyframes ── */
+@keyframes pop-in {
+  from { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+  to   { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+}
+@keyframes pulse-win {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+@keyframes fade-cell {
+  from { opacity: 1; }
+  to   { opacity: 0.15; }
+}
