@@ -3,7 +3,8 @@ html, body, * { font-family: 'Roboto', sans-serif; }
 body {
   background-color: #0d0d20;
   color: #fafafa;
-  height: 100vh;
+  height: 100vh;        /* fallback */
+  height: 100dvh;       /* mobile: excludes browser chrome */
 }
 
 /* ── 3D Board buttons ── */

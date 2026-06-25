@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-col h-screen overflow-hidden p-2">
+  <main class="flex flex-col h-full overflow-hidden p-2">
 
     <!-- ── Header ── -->
     <div class="flex flex-col gap-2 pb-4 shrink-0">
