@@ -57,7 +57,7 @@
         class="ttt-btn relative border-none cursor-pointer disabled:cursor-default disabled:pointer-events-none"
         :class="{ 'ttt-btn--win': winCells.includes(index), 'animate-fade-cell': fadingIndex === index }"
         @click.prevent="itemAction(index)"
-        :disabled="[1, 2].includes(item) || !!modalMsg"
+        :disabled="[1, 2].includes(item) || !!modalMsg || winning"
       >
         <!-- X symbol -->
         <svg v-if="item === 1" class="icon-x icon-cell animate-pop-in" viewBox="0 0 79 79" fill="none">
@@ -104,12 +104,13 @@ const field = ref<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0])
 const game = ref<number[]>([])
 const winCells = ref<number[]>([])
 const fadingIndex = ref<number | null>(null)
+const winning = ref(false)
 const modalMsg = ref('')
 const modalEmoji = ref('')
-const countdown = ref(6)
+const countdown = ref(3)
 
 function startEdit(player: 1 | 2) {
-  if (modalMsg.value) return
+  if (modalMsg.value || winning.value) return
   editingPlayer.value = player
   nextTick(() => {
     if (player === 1) inputOne.value?.focus()
@@ -124,7 +125,10 @@ function stopEdit() {
 }
 
 function getIndicesOf(player: number) {
-  return field.value.reduce<number[]>((acc, v, i) => { if (v === player) acc.push(i); return acc }, [])
+  return field.value.reduce<number[]>((acc, v, i) => {
+    if (v === player && i !== fadingIndex.value) acc.push(i)
+    return acc
+  }, [])
 }
 
 function checkWin(indices: number[]) {
@@ -132,7 +136,7 @@ function checkWin(indices: number[]) {
 }
 
 function itemAction(index: number) {
-  if (field.value[index] !== 0 || modalMsg.value) return
+  if (field.value[index] !== 0 || modalMsg.value || winning.value) return
 
   const current = turn.value
   field.value[index] = current
@@ -150,18 +154,18 @@ function itemAction(index: number) {
   const winCombo = checkWin(getIndicesOf(current))
 
   if (winCombo) {
+    winning.value = true
     winCells.value = winCombo
-    if (current === 1) {
-      scoreOne.value++
-      modalEmoji.value = '🎉'
-      modalMsg.value = `${nameOne.value} победил!`
-    } else {
-      scoreTwo.value++
-      modalEmoji.value = '🏆'
-      modalMsg.value = `${nameTwo.value} победил!`
-    }
-    resetBoard()
-    startCountdown()
+    const msg = current === 1 ? `${nameOne.value} победил!` : `${nameTwo.value} победил!`
+    const emoji = current === 1 ? '🎉' : '🏆'
+    if (current === 1) scoreOne.value++; else scoreTwo.value++
+    setTimeout(() => {
+      winning.value = false
+      modalMsg.value = msg
+      modalEmoji.value = emoji
+      resetBoard()
+      startCountdown()
+    }, 1200)
     return
   }
 
@@ -177,7 +181,7 @@ function resetBoard() {
 }
 
 function startCountdown() {
-  countdown.value = 6
+  countdown.value = 3
   const id = setInterval(() => {
     countdown.value--
     if (countdown.value <= 0) {
@@ -190,6 +194,6 @@ function startCountdown() {
 function closeModal() {
   modalMsg.value = ''
   modalEmoji.value = ''
-  countdown.value = 6
+  countdown.value = 3
 }
 </script>
